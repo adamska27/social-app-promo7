@@ -11,16 +11,18 @@
     <% include ../partials/header%>
   </header>
 
-  <section>
-    <h2>Voici la liste des apprenants : </h2>
+  <section class="container" style="text-align: center">
+    <div class="jumbotron">
+      <h2>Voici la liste des apprenants : </h2>
+    </div>
 
-    <ul>
+    <ul class="list-group">
       <% apprenants.map( (apprenant) => { %>
-          <li>
-            <a href="/users/<%= apprenant.id %>">
+        <a href="/users/<%= apprenant.id %>" class="list-group-item">
+          <li class="list-group-item-text">
               <%= apprenant.firstname %>
-            </a>
           </li>
+        </a>
         <% }) %>
 
     </ul>

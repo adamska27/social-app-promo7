@@ -1,22 +1,47 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/head %>
-  </head>
-  <body>
 
-    <form method="post" action="/users">
+<head>
+  <% include ../partials/head %>
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
+
+  <div class="container">
+    <div class="row">
+      <form action="/users" method="post">
       <label for="">Votre prénom : </label>
-      <input type="text" name="firstname" placeholder="Jean" required>
-      <label for="">Votre nom : </label>
-      <input type="text" name="lastname" placeholder="Dupont" required>
-      <label for="">Votre pseudo Github : </label>
-      <input type="text" name="pseudoGithub" placeholder="JsKing" required>
-      <input type="submit" value="Valider">
-    </form>
+      <div class="input-group input-group-lg col-xs-12">
+        <input type="text" class="form-control" placeholder="Jean-Louis" aria-describedby="sizing-addon1" name="firstname" required>
+      </div>
 
-    <footer>
-      <% include ../partials/footer %>
-    </footer>
-  </body>
+      <label for="">Votre nom : </label>
+      <div class="input-group input-group-lg col-xs-12">
+        <input type="text" class="form-control" placeholder="Dupont" aria-describedby="basic-addon2" name="lastname" required>
+      </div>
+
+      <label for="">Votre pseudo Github : </label>
+      <div class="input-group input-group-lg col-xs-12">
+        <input type="text" class="form-control" placeholder="JsKing" aria-describedby="basic-addon3" required>
+      </div>
+
+      <label for="">Your image URL</label>
+      <div class="input-group input-group-lg col-xs-12">
+        <span class="input-group-addon" id="basic-addon4">url : </span>
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon4" placeholder="https://example.com/img/">
+      </div>
+      </br>
+      <button class="btn btn-default" type="submit">Valider</button>
+      </form>
+    </div>
+  </div>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
 </html>

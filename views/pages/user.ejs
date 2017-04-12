@@ -15,15 +15,17 @@
       </div>
     </a>
   </header>
-  <section class="user-container">
-    <p>Vous êtes sur le profil de
-      <%= apprenant[0].firstname %>
-      <%= apprenant[0].lastname %>
-    </p>
-    <div class="container-img-profil">
-      <!-- <img class="img-profil" src="<%= apprenant.img %>" alt="#"> -->
+  <section class="user-container container-fluid">
+    <div class="row">
+      <p class="jumbotron">Vous êtes sur le profil de
+        <%= apprenant[0].firstname %>
+        <%= apprenant[0].lastname %>
+      </p>
+      <div class="container-img-profil">
+        <!-- <img class="img-profil" src="<%= apprenant.img %>" alt="#"> -->
+      </div>
+      <a href="<%= apprenant[0].id %>/projects" /><p>Voir ces projets</p></a>
     </div>
-    <a href="<%= apprenant[0].id %>/projects" /><p>Voir ces projets</p></a>
   </section>
   <footer>
     <% include ../partials/footer %>
