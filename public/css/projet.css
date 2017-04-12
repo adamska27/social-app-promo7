@@ -1,0 +1,14 @@
+.projet {
+  margin-top: 150px;
+  text-align: center;
+  font-family: 'Hind', 'sans-serif';
+  font-size: 2em;
+}
+
+.projet > a {
+  color: black;
+}
+
+.projet > a:hover {
+  text-decoration: underline;
+}

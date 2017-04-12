@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../partials/head %>
+    <link rel="stylesheet" href="css/usersList.css">
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header%>
+  </header>
+
+  <section>
+    <h2>Voici la liste des apprenants : </h2>
+
+    <ul>
+      <% apprenants.map( (apprenant) => { %>
+          <li>
+            <a href="/users/<%= apprenant.id %>">
+              <%= apprenant.firstname %>
+            </a>
+          </li>
+        <% }) %>
+
+    </ul>
+  </section>
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
+</html>

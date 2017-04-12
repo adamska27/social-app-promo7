@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../partials/head %>
+    <link rel="stylesheet" href="../../css/user.css">
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header%>
+    <a href="/users">
+      <div class="btn-back">
+      Retour
+      </div>
+    </a>
+  </header>
+  <section class="user-container">
+    <p>Vous êtes sur le profil de
+      <%= apprenant[0].firstname %>
+      <%= apprenant[0].lastname %>
+    </p>
+    <div class="container-img-profil">
+      <!-- <img class="img-profil" src="<%= apprenant.img %>" alt="#"> -->
+    </div>
+    <a href="<%= apprenant[0].id %>/projects" /><p>Voir ces projets</p></a>
+  </section>
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
+</html>

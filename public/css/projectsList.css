@@ -1,0 +1,14 @@
+.projects-list {
+  margin-top: 150px;
+  font-size: 2em;
+  font-family: 'Hind', 'cursive';
+}
+
+.projects-list a {
+  color: black;
+}
+
+
+.projects-list a:hover {
+  text-decoration: underline;
+}

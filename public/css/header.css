@@ -1,0 +1,12 @@
+.header-style {
+  height: 50px;
+  margin-bottom: 40px;
+  display: flex;
+}
+
+.header-img {
+  width: 180px;
+  /*position: absolute;
+  top: 0;
+  left: 20px;*/
+}

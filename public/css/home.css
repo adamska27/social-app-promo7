@@ -1,0 +1,37 @@
+h1 {
+  text-align: center;
+  color: black;
+  font-size: 5em;
+  margin-top: 50px;
+}
+
+.btns {
+  text-align: center; 
+}
+
+.btn {
+  padding: 5px;
+  font-size: 1.5em;
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  background-color: #07FFEC;
+  color: black;
+  border: black solid 1px;
+  margin-top: 15px;
+}
+
+.btn:hover {
+  background-color: #06E897;
+  color: white;
+}
+
+.photo-promo {
+  width: 100%;
+  text-align: center;
+}
+
+.photo-promo img {
+  width: 50%;
+  box-shadow: 3px 3px 5px black;
+}

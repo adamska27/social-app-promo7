@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+
+    <form method="post" action="/users">
+      <label for="">Votre prénom : </label>
+      <input type="text" name="firstname" placeholder="Jean" required>
+      <label for="">Votre nom : </label>
+      <input type="text" name="lastname" placeholder="Dupont" required>
+      <label for="">Votre pseudo Github : </label>
+      <input type="text" name="pseudoGithub" placeholder="JsKing" required>
+      <input type="submit" value="Valider">
+    </form>
+
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>
