@@ -1,37 +1,40 @@
 h1 {
   text-align: center;
   color: black;
-  font-size: 5em;
+  font-size: 2em;
   margin-top: 50px;
 }
 
 .btns {
-  text-align: center; 
+  text-align: center;
 }
 
-.btn {
+.home-btn {
   padding: 5px;
   font-size: 1.5em;
   width: 300px;
   margin: auto;
   text-align: center;
-  background-color: #07FFEC;
-  color: black;
+  background-color: #222;
   border: black solid 1px;
   margin-top: 15px;
 }
 
-.btn:hover {
-  background-color: #06E897;
-  color: white;
+.home-btn > a {
+  color: #9d9d9d;
+}
+
+.home-btn:hover {
+  background-color: white;
+  color: black;
 }
 
 .photo-promo {
   width: 100%;
-  text-align: center;
+  margin: auto;
 }
 
 .photo-promo img {
-  width: 50%;
+  width: 950px;
   box-shadow: 3px 3px 5px black;
 }

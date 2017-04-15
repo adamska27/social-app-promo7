@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <% include ../partials/head %>
+    <link rel="stylesheet" href="css/usersList.css">
+</head>
+
+<body>
+  <header>
+    <% include ../partials/header%>
+  </header>
+
+  <section class="container" style="text-align: center;">
+    <div class="jumbotron">
+      <h2>Voici la liste des apprenants : </h2>
+    </div>
+
+    <ul class="list-group">
+      <% apprenants.map( (apprenant) => { %>
+        <a href="/users/<%= apprenant.id %>" class="list-group-item">
+          <li class="list-group-item-text">
+              <%= apprenant.firstname %>
+          </li>
+        </a>
+        <% }) %>
+
+    </ul>
+  </section>
+  <footer style="margin-top: 50px;">
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
+</html>

@@ -8,7 +8,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/">Simplon</a>
+      <a class="navbar-brand" href="/">Simplon.co</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -25,7 +25,7 @@
 
           <ul class="dropdown-menu">
             <li><a href="/users">voir les apprenants</a></li>
-            <li><a href="/form">ajouter un apprenant</a></li>
+            <li><a href="/addUser">ajouter un apprenant</a></li>
           </ul>
         </li>
 
@@ -33,16 +33,30 @@
 
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" href="#" aria-expanded="false">
             Projets
-          <span class="caret"></span>
+            <span class="caret"></span>
           </a>
 
           <ul class="dropdown-menu">
-            <li><a href="/projects">voir les projets</a></li>
-            <li><a href="#">ajouter un projet</a></li>
+            <li>
+              <a href="/projects">voir les projets</a>
+            </li>
+            <li>
+              <a href="#">ajouter un projet</a>
+            </li>
           </ul>
         </li>
       </ul>
 
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <form class="navbar-form navbar-right" action="/users/search" method="get">
+            <div class="form-group">
+              <input type="search" name="search" class="form-control" placeholder="Apprenant cool">
+            </div>
+            <button type="submit" class="btn btn-default">Chercher</button>
+          </form>
+        </li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

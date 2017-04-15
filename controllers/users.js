@@ -11,7 +11,7 @@ const getAll = (req, res) => {
 
       done();
 
-      res.render('pages/usersList', {
+      res.render('usersPages/usersList', {
         apprenants: result.rows
       });
     });
@@ -19,6 +19,7 @@ const getAll = (req, res) => {
 };
 
 const getOne = (req, res) => {
+
   pg.connect(urlBD, (err, client, done) => {
     if (err) throw err;
 
@@ -27,9 +28,28 @@ const getOne = (req, res) => {
 
       done();
 
-      res.render('pages/user', {
+      res.render('usersPages/user', {
         apprenant: result.rows,
+        id: req.params.id,
       });
+    });
+  });
+};
+
+const getSpecificUser = (req, res) => {
+  const search = req.query.search.toLowerCase();
+
+  pg.connect(urlBD, (err, client, done) => {
+    if (err) throw err;
+
+    client.query('SELECT * FROM apprenants where firstname = $1', [search], (err, result) => {
+      if (err) throw err;
+      done();
+      if (result.rows.length > 0) {
+        res.render('usersPages/searchResults',{ apprenants: result.rows});
+      } else {
+        res.render('usersPages/noSearchResults');
+      }
     });
   });
 };
@@ -43,7 +63,7 @@ const getUserProjects = (req, res) => {
   });
 
   if(projectUser) {
-    res.render('pages/userProjects', {
+    res.render('usersPages/userProjects', {
       projects: projectUser,
       userId: req.params.userId
     });
@@ -56,12 +76,14 @@ const postUser = (req, res) => {
   pg.connect(urlBD, (err, client, done) => {
     if (err) throw err;
 
-    client.query('INSERT INTO apprenants VALUES ($1, $2)', [req.body.firstname, req.body.lastname], (err, result) => {
+    client.query('INSERT INTO apprenants VALUES ($1, $2)', [req.body.firstname.toLowerCase(), req.body.lastname.toLowerCase()], (err, result) => {
       if (err) throw err;
-
       done();
-
-      res.render('pages/added', {result: result.rows});
+      res.render('usersPages/added',
+      {
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+      });
     });
   });
 };
@@ -77,7 +99,11 @@ const deleteUser = (req, res) => {
 
       done();
 
-      res.render('pages/deleted', {user: result.rows});
+      res.render('usersPages/deleted',
+      {
+        user: result.rows,
+        id: userId
+      });
     });
   });
 };
@@ -91,8 +117,13 @@ const putUser = (req, res) => {
       if(err) throw err;
 
       done();
-
-      res.render('pages/updated');
+      console.log(userId);
+      res.render('usersPages/updated',
+      {
+        firstname: req.body.firsname,
+        lastname: req.body.lastname,
+        id: userId
+      });
     });
   });
 };
@@ -100,6 +131,7 @@ const putUser = (req, res) => {
 module.exports = {
   getAll,
   getOne,
+  getSpecificUser,
   getUserProjects,
   postUser,
   deleteUser,
