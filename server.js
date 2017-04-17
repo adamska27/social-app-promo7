@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const userController = require('./controllers/users');
+const projectController = require('./controllers/projects');
 
 app.set('view engine', 'ejs');
 
@@ -26,10 +27,15 @@ usersRoutes.get('/:id', userController.getOne);
 usersRoutes.post('/', userController.postUser);
 usersRoutes.post('/:id', userController.deleteUser);
 usersRoutes.post('/:id/modif', userController.putUser);
+usersRoutes.post('/:id/project', userController.postProject);
 
 app.get('/addUser', (req, res) => {
   res.render('usersPages/form');
 });
+
+projectsRoutes.get('/', projectController.getAll);
+projectsRoutes.get('/:id', projectController.getOne);
+
 // projectsRoutes.get('/', (req, res) => {
 //     res.render('pages/projectsList', {
 //       projects: projects

@@ -1,5 +1,5 @@
 const pg = require('pg');
-const Pool = require('pg').Pool;
+const Pool = pg.Pool;
 
 // by default the pool will use the same environment variables
 // as psql, pg_dump, pg_restore etc:
@@ -14,7 +14,7 @@ const config = {
 };
 
 process.on('unhandledRejection', function(e) {
-  console.log(e.message, e.stack)
+  console.log(e.message, e.stack);
 })
 
 // create the pool somewhere globally so its lifetime
@@ -119,6 +119,13 @@ const putUser = (req, res) => {
     });
 };
 
+const postProject = (req, res) => {
+    pool.query('INSERT INTO projects VALUES ($1, $2, $3, $4)', [req.body.name, req.body.githubrepo, req.body.githuburl, req.params.id], (err) => {
+      res.send(req.body.name, req.body.githubrepo, req.body.githuburl, req.params.id);
+    });
+};
+
+
 module.exports = {
   getAll,
   getOne,
@@ -126,5 +133,6 @@ module.exports = {
   getUserProjects,
   postUser,
   deleteUser,
-  putUser
+  putUser,
+  postProject
 };
