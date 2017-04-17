@@ -22,54 +22,28 @@ app.use('/projects', projectsRoutes);
 app.use('/api', apiRoutes);
 
 usersRoutes.get('/', userController.getAll);
-usersRoutes.get('/search', userController.getSpecificUser);
+usersRoutes.get('/search', userController.searchUser);
 usersRoutes.get('/:id', userController.getOne);
+usersRoutes.get('/:id/projects', projectController.getProjectsUser);
+usersRoutes.get('/:id/projects/:idProject', userController.getOneProjectUser);
 usersRoutes.post('/', userController.postUser);
 usersRoutes.post('/:id', userController.deleteUser);
 usersRoutes.post('/:id/modif', userController.putUser);
-usersRoutes.post('/:id/project', userController.postProject);
+usersRoutes.post('/:id/project', projectController.postProject);
+usersRoutes.post('/:id/projects/:idProject', projectController.deleteProject);
+
+projectsRoutes.get('/', projectController.getAll);
+projectsRoutes.get('/:idProject', projectController.getOne);
 
 app.get('/addUser', (req, res) => {
   res.render('usersPages/form');
+})
+.get('/', function (req, res) {
+  res.render('pages/home');
+})
+.get('*', (req, res) => {
+  res.status(404).send(`Cette page n'existe pas!!! :(`);
 });
-
-projectsRoutes.get('/', projectController.getAll);
-projectsRoutes.get('/:id', projectController.getOne);
-
-// projectsRoutes.get('/', (req, res) => {
-//     res.render('pages/projectsList', {
-//       projects: projects
-//     });
-//   })
-//   .get('/:id', (req, res) => {
-//
-//     const project = projects.find( (project) => {
-//       return project.id === Number(req.params.id);
-//     });
-//
-//     if (project) {
-//       res.render('pages/project', {
-//         projects : projects,
-//         id: req.params.id
-//       });
-//     } else {
-//       res.send(`Ce projet n'existe pas!!`);
-//     }
-//   });
-//
-//   apiRoutes.get('/users', (req, res) => {
-//     res.send(JSON.stringify(users));
-//   })
-//   .get('/projects', (req, res) => {
-//     res.send(JSON.stringify(projects));
-//   });
-
-  app.get('/', function (req, res) {
-    res.render('pages/home');
-  })
-  .get('*', (req, res) => {
-    res.status(404).send(`Cette page n'existe pas!!! :(`);
-  });
 
 app.listen(5000, () => {
   console.log('Le serveur écoute sur le port 5000!');

@@ -25,14 +25,62 @@ const getAll = (req, res) => {
 };
 
 const getOne = (req, res) => {
-  pool.query('SELECT * FROM projects WHERE id = $1', [req.params.id], (err, result) => {
+  pool.query('SELECT * FROM projects WHERE id = $1', [req.params.idProject], (err, result) => {
     if (err) throw err;
+    res.render('projectsPages/project',
+    {
+      project: result.rows[0],
+      id: req.params.id,
+      idProject: req.params.idProject
+    });
+  });
+};
 
-    res.render('projectsPages/project', {project: result.rows[0]});
+const postProject = (req, res) => {
+
+    pool.query('INSERT INTO projects VALUES ($1, $2, $3, $4)', [req.body.name, req.body.githubrepo, req.body.githuburl, req.params.id], (err) => {
+      if(err) throw err;
+
+      res.render('projectsPages/added',
+      {
+        name: req.body.name,
+        githubrepo: req.body.githubrepo,
+        githuburl: req.body.githuburl,
+        id: req.params.id
+      });
+    });
+};
+
+const getProjectsUser = (req, res) => {
+  pool.query('SELECT * FROM projects WHERE userId = $1', [req.params.id], (err, result) => {
+    if (err) throw err;
+    if (result.rows.length > 0) {
+      res.render('projectsPages/projectUserList',
+      {
+        projects: result.rows,
+        id: req.params.id
+      });
+    } else {
+      res.render('projectsPages/noProjectUser');
+    }
+  });
+};
+
+const deleteProject = (req, res) => {
+  pool.query('DELETE FROM projects WHERE id = $1', [req.params.idProject], (err) => {
+    if (err) throw err;
+    res.render('projectsPages/deleted',
+    {
+      id: req.params.id,
+      idProject: req.params.idProject
+    });
   });
 };
 
 module.exports = {
   getAll,
   getOne,
+  postProject,
+  getProjectsUser,
+  deleteProject
 };

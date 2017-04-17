@@ -4,6 +4,10 @@
 <head>
   <% include ../partials/head %>
     <link rel="stylesheet" href="../../css/user.css">
+    <style type="text/css">
+
+
+    </style>
 </head>
 
 <body>
@@ -11,18 +15,28 @@
     <% include ../partials/header%>
   </header>
 
-  <section class="user-container container-fluid">
-    <div class="row">
-      <button type="button" class="btn btn-primary col-lg-offset-9" data-toggle="modal" data-target="#myModal">
-        Modifier les informations du profil
+  <section class="user-container">
+  <div class="container-fluid container-btn">
+    <div>
+      <button type="button" class="btn btn-primary btn-lg btn-width" data-toggle="modal" data-target="#modalFormModifProfile">
+        Modifier les info du profil
       </button>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary btn-lg btn-width" data-toggle="modal" data-target="#modalFormAddProject">
+        Ajouter un projet
+      </button>
+    </div>
 
-      <form class="col-lg-1" action="/users/<%= id %>" method="post" onsubmit="return confirm('Êtves-vous sur de vouloir supprimer ce profil?')";>
-      <button type="submit" class="btn btn-danger">
+      <form  action="/users/<%= id %>" method="post" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer ce profil?')">
+      <button type="submit" class="btn btn-danger btn-lg btn-width">
         supprimer le profil
       </button>
       </form>
+  </div>
 
+  <div class="container">
+    <div class="row">
       <div class="jumbotron">
         <p>Vous êtes sur le profil de
           <%= apprenant[0].firstname %>
@@ -35,10 +49,11 @@
       </div>
     <p>  <a href="<%= apprenant[0].id %>/projects" />Voir ces projets</a></p>
     </div>
+  </div>
   </section>
 
   <div style="text-align: center">
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal fade" id="modalFormModifProfile" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <form action="/users/<%= id %>/modif" method="post">
@@ -79,6 +94,44 @@
       </div>
     </div>
   </div>
+
+  <div style="text-align: center">
+    <div class="modal fade" id="modalFormAddProject" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <form action="/users/<%= id %>/project" method="post">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Ajout du projet</h4>
+            </div>
+            <div class="modal-body">
+              <div>
+                    <label for="">Nom du projet : </label>
+                    <div class="input-group input-group-lg col-xs-12">
+                      <input type="text" class="form-control" aria-describedby="sizing-addon1" name="name" maxlength="40" placeholder="fresh WebApp" required>
+                    </div>
+
+                    <label for="">Repo Github du projet : </label>
+                    <div class="input-group input-group-lg col-xs-12">
+                      <input type="text" class="form-control" placeholder="social-react-app" aria-describedby="basic-addon2" name="githubrepo" maxlength="40" required>
+                    </div>
+
+                    <label for="">Adresse du repo Github : </label>
+                    <div class="input-group input-group-lg col-xs-12">
+                      <input type="text" class="form-control" placeholder="https://github.com/simplonco/js-express-routes" aria-describedby="basic-addon3" maxlength="200" required name="githuburl">
+                    </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
+              <button type="submit" class="btn btn-primary">Sauvegarder les changements</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
   <footer>
     <% include ../partials/footer %>

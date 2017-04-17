@@ -2,7 +2,7 @@
 <html>
   <head>
     <% include ../partials/head %>
-    <link rel="stylesheet" href="css/projectsList.css">
+    <link rel="stylesheet" href="/css/project.css">
   </head>
   <body>
     <header>
@@ -11,25 +11,18 @@
 
     <section class="container" style="text-align: center">
       <div class="jumbotron">
-        <h2>Voici la liste des projets des apprenants de la promo 7 : </h2>
+        Voici la liste des projets :
       </div>
-
       <ul class="list-group">
-
-        <% projects.map( (project) => { %>
-
+      <% projects.map((project) => { %>
           <a href="projects/<%= project.id %>" class="list-group-item">
             <li class="list-group-item-text">
-              <p><%= project.name %></p>
-              <p><%= project.githubrepo %></p>
+              <%= project.name %>
+              <%= project.githubrepo %>
             </li>
           </a>
-
-        <% } ) %>
-
-      </ul>
-
-
+      <% }) %>
+    </ul>
     </section>
 
     <footer>

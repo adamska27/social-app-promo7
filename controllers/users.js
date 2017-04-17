@@ -46,7 +46,7 @@ const getOne = (req, res) => {
     });
 };
 
-const getSpecificUser = (req, res) => {
+const searchUser = (req, res) => {
   const search = req.query.search;
 
     pool.query('SELECT * FROM apprenants where firstname = $1', [search], (err, result) => {
@@ -58,23 +58,6 @@ const getSpecificUser = (req, res) => {
         res.render('usersPages/noSearchResults');
       }
     });
-};
-
-//A revoir probleme sur la route
-const getUserProjects = (req, res) => {
-
-  const projectUser = projects.filter( (project) => {
-    return project.userId === Number(req.params.userId);
-  });
-
-  if(projectUser) {
-    res.render('usersPages/userProjects', {
-      projects: projectUser,
-      userId: req.params.userId
-    });
-  } else {
-    res.send(`Ce projet n'existe pas!!`);
-  }
 };
 
 const postUser = (req, res) => {
@@ -119,20 +102,24 @@ const putUser = (req, res) => {
     });
 };
 
-const postProject = (req, res) => {
-    pool.query('INSERT INTO projects VALUES ($1, $2, $3, $4)', [req.body.name, req.body.githubrepo, req.body.githuburl, req.params.id], (err) => {
-      res.send(req.body.name, req.body.githubrepo, req.body.githuburl, req.params.id);
+const getOneProjectUser = (req, res) => {
+  pool.query('SELECT * FROM projects WHERE id = $1', [req.params.idProject], (err, result) => {
+    if (err) throw err;
+    res.render('projectsPages/projectUser',
+    {
+      project: result.rows[0],
+      id: req.params.id,
+      idProject: req.params.idProject
     });
+  });
 };
-
 
 module.exports = {
   getAll,
   getOne,
-  getSpecificUser,
-  getUserProjects,
+  searchUser,
   postUser,
   deleteUser,
   putUser,
-  postProject
+  getOneProjectUser
 };

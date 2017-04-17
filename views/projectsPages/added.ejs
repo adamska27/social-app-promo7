@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <header>
+      <% include ../partials/header %>
+    </header>
+
+    <section class="container" style="text-align:center">
+      <div class="jumbotron">
+        <p>Le projet <%= name %> a bien été ajouté au profil</p>
+        <p><a href="/users/<%= id %>/projects">Cliquez ici pour afficher les projets du profil</a></p>
+      </div>
+    </section>
+
+    <footer>
+      <% include ../partials/footer %>
+    </footer>
+  </body>
+</html>

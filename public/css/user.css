@@ -4,8 +4,16 @@
   font-family: 'Hind', 'sans-serif';
 }
 
+.container-btn {
+  text-align: left;
+}
+
+.btn-width {
+  width: 220px;
+}
+
 .container-img-profil {
-  width: 500px;
+  width: 80%;
   height: 400px;
   margin: auto;
   padding: 5%;
