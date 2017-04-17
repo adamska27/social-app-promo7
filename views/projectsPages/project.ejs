@@ -1,27 +1,35 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/head %>
+
+<head>
+  <% include ../partials/head %>
     <link rel="stylesheet" href="/css/project.css">
-  </head>
-  <body>
-    <header>
-      <% include ../partials/header %>
-    </header>
+</head>
 
-    <section class="container" style="text-align: center">
-      <div class="jumbotron">
-        <h2><%= project.name %></h2>
-      </div>
-      <div>
-        <p class="projet">
-          <a href="<%= project.githuburl %>" ><%= project.githubrepo %></a>
-        </p>
-      </div>
-    </section>
+<body>
+  <header>
+    <% include ../partials/header %>
+  </header>
 
-    <footer>
-      <% include ../partials/footer %>
-    </footer>
-  </body>
+  <section class="container" style="text-align: center">
+    <div class="jumbotron">
+      <h2><%= project.name %></h2>
+    </div>
+    <div>
+      <p class="projet">
+        <a href="<%= project.githuburl %>">
+          <%= project.githubrepo %>
+        </a>
+      </p>
+      <p>
+        <%= project.description %>
+      </p>
+    </div>
+  </section>
+
+  <footer>
+    <% include ../partials/footer %>
+  </footer>
+</body>
+
 </html>

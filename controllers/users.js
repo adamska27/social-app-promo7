@@ -62,7 +62,7 @@ const searchUser = (req, res) => {
 
 const postUser = (req, res) => {
 
-    pool.query('INSERT INTO apprenants VALUES ($1, $2)', [req.body.firstname.toLowerCase(), req.body.lastname.toLowerCase()], (err, result) => {
+    pool.query('INSERT INTO apprenants VALUES ($1, $2, $3, $4)', [req.body.firstname.toLowerCase(), req.body.lastname.toLowerCase(), req.body.pseudo, req.body.img], (err, result) => {
       if (err) throw err;
 
       res.render('usersPages/added',
@@ -90,7 +90,7 @@ const deleteUser = (req, res) => {
 const putUser = (req, res) => {
   const userId = Number(req.params.id);
 
-    pool.query('UPDATE apprenants SET firstname = $1, lastname = $2 WHERE id = $3', [req.body.firstname, req.body.lastname, userId], (err, result) => {
+    pool.query('UPDATE apprenants SET firstname = $1, lastname = $2, pseudogithub = $3, img = $4 WHERE id = $5', [req.body.firstname, req.body.lastname, req.body.pseudo, req.body.img, userId], (err, result) => {
       if(err) throw err;
 
       res.render('usersPages/updated',

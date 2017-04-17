@@ -6,7 +6,6 @@
     <link rel="stylesheet" href="../../css/user.css">
     <style type="text/css">
 
-
     </style>
 </head>
 
@@ -16,40 +15,45 @@
   </header>
 
   <section class="user-container">
-  <div class="container-fluid container-btn">
-    <div>
-      <button type="button" class="btn btn-primary btn-lg btn-width" data-toggle="modal" data-target="#modalFormModifProfile">
+    <div class="container-fluid container-btn">
+      <div>
+        <button type="button" class="btn btn-info btn-lg btn-width" data-toggle="modal" data-target="#modalFormModifProfile">
         Modifier les info du profil
       </button>
-    </div>
-    <div>
-      <button type="button" class="btn btn-primary btn-lg btn-width" data-toggle="modal" data-target="#modalFormAddProject">
+      </div>
+      <div>
+        <button type="button" class="btn btn-primary btn-lg btn-width" data-toggle="modal" data-target="#modalFormAddProject">
         Ajouter un projet
       </button>
-    </div>
+      </div>
 
-      <form  action="/users/<%= id %>" method="post" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer ce profil?')">
-      <button type="submit" class="btn btn-danger btn-lg btn-width">
+      <form action="/users/<%= id %>" method="post" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer ce profil?')">
+        <button type="submit" class="btn btn-danger btn-lg btn-width">
         supprimer le profil
       </button>
       </form>
-  </div>
-
-  <div class="container">
-    <div class="row">
-      <div class="jumbotron">
-        <p>Vous êtes sur le profil de
-          <%= apprenant[0].firstname %>
-          <%= apprenant[0].lastname %>
-        </p>
-      </div>
-
-      <div class="container-img-profil">
-        <!-- <img class="img-profil" src="<%= apprenant.img %>" alt="#"> -->
-      </div>
-    <p>  <a href="<%= apprenant[0].id %>/projects" />Voir ces projets</a></p>
     </div>
-  </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="jumbotron">
+          <p>Vous êtes sur le profil de
+            <%= apprenant[0].firstname %>
+              <%= apprenant[0].lastname %> aka
+                <%= apprenant[0].pseudogithub %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-offset-1 col-xs-10 col-lg-offset-3 col-lg-6">
+          <img class="img-profil img-responsive" src="<%= apprenant[0].img %>" alt="img-profil">
+        </div>
+      </div>
+      <p style="margin-bottom: 150px"> <a href="<%= apprenant[0].id %>/projects" />Voir ces projets</a>
+      </p>
+    </div>
+    </div>
   </section>
 
   <div style="text-align: center">
@@ -63,26 +67,26 @@
             </div>
             <div class="modal-body">
               <div>
-                    <label for="">Votre prénom : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" aria-describedby="sizing-addon1" name="firstname" maxlength="25" placeholder="<%= apprenant[0].firstname %>" required>
-                    </div>
+                <label for="">Votre prénom : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" aria-describedby="sizing-addon1" name="firstname" maxlength="25" placeholder="<%= apprenant[0].firstname %>" required>
+                </div>
 
-                    <label for="">Votre nom : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" placeholder="<%= apprenant[0].lastname %>" aria-describedby="basic-addon2" name="lastname" maxlength="25" required>
-                    </div>
+                <label for="">Votre nom : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" placeholder="<%= apprenant[0].lastname %>" aria-describedby="basic-addon2" name="lastname" maxlength="25" required>
+                </div>
 
-                    <label for="">Votre pseudo Github : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" placeholder="<%= apprenant[0].pseudoGithub %>" aria-describedby="basic-addon3" maxlength="35" required>
-                    </div>
+                <label for="">Votre pseudo Github : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" placeholder="<%= apprenant[0].pseudogithub %>" aria-describedby="basic-addon3" name="pseudo" maxlength="35" required>
+                </div>
 
-                    <label for="">Your image URL</label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <span class="input-group-addon" id="basic-addon4">url : </span>
-                      <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon4" maxlength="200" placeholder="https://example.com/img/">
-                    </div>
+                <label for="">Your image URL</label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <span class="input-group-addon" id="basic-addon4">url : </span>
+                  <input type="url" class="form-control" id="basic-url" aria-describedby="basic-addon4" name="img" maxlength="10000" placeholder="https://example.com/img/">
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -106,20 +110,25 @@
             </div>
             <div class="modal-body">
               <div>
-                    <label for="">Nom du projet : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" aria-describedby="sizing-addon1" name="name" maxlength="40" placeholder="fresh WebApp" required>
-                    </div>
+                <label for="">Nom du projet : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" aria-describedby="sizing-addon1" name="name" maxlength="40" placeholder="fresh WebApp" required>
+                </div>
 
-                    <label for="">Repo Github du projet : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" placeholder="social-react-app" aria-describedby="basic-addon2" name="githubrepo" maxlength="40" required>
-                    </div>
+                <label for="">Repo Github du projet : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" placeholder="social-react-app" aria-describedby="basic-addon2" name="githubrepo" maxlength="40" required>
+                </div>
 
-                    <label for="">Adresse du repo Github : </label>
-                    <div class="input-group input-group-lg col-xs-12">
-                      <input type="text" class="form-control" placeholder="https://github.com/simplonco/js-express-routes" aria-describedby="basic-addon3" maxlength="200" required name="githuburl">
-                    </div>
+                <label for="">Adresse du repo Github : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <input type="text" class="form-control" placeholder="https://github.com/simplonco/js-express-routes" aria-describedby="basic-addon3" maxlength="200" required name="githuburl">
+                </div>
+
+                <label for="">Description du projet(max. 500 caractères) : </label>
+                <div class="input-group input-group-lg col-xs-12">
+                  <textarea type="text" placeholder="C'est l'histoire d'un projet fantastique..." aria-describedby="basic-addon3" maxlength="500" name="description"></textarea>
+                </div>
               </div>
             </div>
             <div class="modal-footer">
@@ -138,4 +147,5 @@
   </footer>
 
 </body>
+
 </html>

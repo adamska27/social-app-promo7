@@ -20,7 +20,7 @@
       <% apprenants.map( (apprenant) => { %>
         <a href="/users/<%= apprenant.id %>" class="list-group-item">
           <li class="list-group-item-text">
-              <%= apprenant.firstname %>
+              <%= apprenant.firstname %> <%= apprenant.lastname %>
           </li>
         </a>
         <% }) %>
