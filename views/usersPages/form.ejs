@@ -15,23 +15,23 @@
       <form action="/users" method="post">
       <label for="">Votre prénom : </label>
       <div class="input-group input-group-lg col-xs-12">
-        <input type="text" class="form-control" placeholder="Jean-Louis" aria-describedby="sizing-addon1" name="firstname" required>
+        <input type="text" class="form-control" placeholder="Jean-Louis" aria-describedby="sizing-addon1" name="firstname" required maxlength="20">
       </div>
 
       <label for="">Votre nom : </label>
       <div class="input-group input-group-lg col-xs-12">
-        <input type="text" class="form-control" placeholder="Dupont" aria-describedby="basic-addon2" name="lastname" required>
+        <input type="text" class="form-control" placeholder="Dupont" aria-describedby="basic-addon2" name="lastname" required maxlength="20">
       </div>
 
       <label for="">Votre pseudo Github : </label>
       <div class="input-group input-group-lg col-xs-12">
-        <input type="text" class="form-control" placeholder="JsKing" aria-describedby="basic-addon3" required>
+        <input type="text" class="form-control" placeholder="JsKing" aria-describedby="basic-addon3" required maxlength="25">
       </div>
 
       <label for="">Your image URL</label>
       <div class="input-group input-group-lg col-xs-12">
         <span class="input-group-addon" id="basic-addon4">url : </span>
-        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon4" placeholder="https://example.com/img/">
+        <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon4" placeholder="https://example.com/img/" maxlength="200">
       </div>
       </br>
       <button class="btn btn-default" type="submit">Valider</button>
