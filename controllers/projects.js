@@ -47,7 +47,7 @@ const postProject = (req, res) => {
             name: req.body.name,
             githubrepo: req.body.githubrepo,
             githuburl: req.body.githuburl,
-            description: description,
+            description: req.body.description,
             id: req.params.id
         });
     });
